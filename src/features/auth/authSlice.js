@@ -45,16 +45,16 @@ export const authSlice = createSlice({
 
   },
 });
-
+ 
 export const register = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
     try {
       return await authService.register(user);
     } catch (error) {
-      console.log(error.response.data.messages[0])
-      const message = error.response.data.messages[0]
-      return thunkAPI.rejectWithValue(message);
+      // console.log(error.response.data.messages[0])
+      // const message = error.response.data.messages[0]
+      return thunkAPI.rejectWithValue("There was an error trying to register");
     }
   }
 );

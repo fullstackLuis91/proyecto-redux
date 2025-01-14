@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
-import { register } from "../../src/features/auth/authSlice";
+import { register, reset } from "../../src/features/auth/authSlice";
 
 const Register = () => {
   const initialValue = {
@@ -15,6 +15,24 @@ const Register = () => {
   const { name, email, birthday, password, password2 } = formData;
  
   const dispatch = useDispatch();
+
+  const { isSuccess, message, isError } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isSuccess) {
+      notification.success({
+        message: "Success",
+        description: message,
+      });
+    }
+    if(isError){
+      notification.error({
+        message: "Error",
+        description: message,
+      });
+    }
+    dispatch(reset())
+  }, [isSuccess,isError]);
 
   const onChange = (e) => {
     setFormData({
