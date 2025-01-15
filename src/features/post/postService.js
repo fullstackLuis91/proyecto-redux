@@ -15,11 +15,22 @@ const getByTitle = async (title) => {
   const res = await axios.get(API_URL + "/title/" + title);
   return res.data;
 };
+const addPost = async (postData) => {
+  const token = localStorage.getItem("token") 
+  const res = await axios.post(API_URL + "/create", postData, {
+    headers: {
+      authorization: token,
+    }
+  })
+  return res.data
+};
+
 
 const postService = {
   getAll,
   getById,
-  getByTitle
+  getByTitle,
+  addPost
 };
 
 export default postService;
