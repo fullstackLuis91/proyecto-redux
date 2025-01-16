@@ -12,7 +12,7 @@ const getById = async (id) => {
 };
 
 const getByTitle = async (title) => {
-  const res = await axios.get(API_URL + "/title/" + title);
+  const res = await axios.get(API_URL + "/getByTitle/" + title);
   return res.data;
 };
 

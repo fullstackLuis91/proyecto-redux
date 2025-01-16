@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,15 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      //console.log(text); ver los Titulos que trae...
+      navigate("/search/"+text);
+    }
+  };
+
   const onLogout = () => {
     dispatch(logout());
     navigate("/login")
@@ -19,6 +28,9 @@ const Header = () => {
   return (
     <div>
       <Link to="/">Home</Link> /
+      
+      <input onKeyUp={handleChange} placeholder="search post" name="text" />
+
       {user ? (
         <>
         <Link to="/profile">{user.name}</Link>

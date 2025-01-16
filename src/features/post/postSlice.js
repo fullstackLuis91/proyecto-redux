@@ -14,6 +14,8 @@ export const getAll = createAsyncThunk("posts/getAll", async () => {
     console.error(error);
   }
 });
+
+
 export const getById = createAsyncThunk("posts/getById", async (id) => {
   try {
     return await postService.getById(id);
