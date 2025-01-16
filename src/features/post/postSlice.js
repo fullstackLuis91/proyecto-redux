@@ -33,6 +33,13 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
     }
   });
 
+  export const like = createAsyncThunk("posts/like", async (_id) => {
+    try {
+      return await postService.like(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
   //funcion createPost
   export const addPost = createAsyncThunk("posts/addPost", async (postData) => {
     try {
@@ -41,6 +48,16 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
       console.error(error);
     }
   });
+
+  export const unLike = createAsyncThunk("posts/unLike", async (_id) => {
+    try {
+      return await postService.unLike(_id);
+    } catch (error) {
+      console.error(error);
+    }
+    })
+  
+
 
   export const addComment = createAsyncThunk("posts/addComment", async (id) => {
     try {
@@ -68,6 +85,24 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
       })
       .addCase(getByTitle.fulfilled, (state,action)=>{
         state.posts = action.payload
+      })
+      .addCase(like.fulfilled,(state,action)=>{
+        const postsUpdated = state.posts.map(post=>{
+          if(post._id == action.payload._id){
+            post = action.payload
+          }
+          return post
+        })
+        state.posts = postsUpdated
+      })
+      .addCase(unLike.fulfilled,(state,action)=>{
+        const postsUpdated = state.posts.map(post=>{
+          if(post._id == action.payload._id){
+            post = action.payload
+          }
+          return post
+        })
+        state.posts = postsUpdated
       })
   },
 });
