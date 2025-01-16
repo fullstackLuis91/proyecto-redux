@@ -28,7 +28,7 @@ const PostDetail = () => {
         const onSubmit = async (e) => {
               e.preventDefault();
               await dispatch(addComment({commentData, id}));
-              
+              dispatch(getById(id))
             };
 
     useEffect(()=>{
