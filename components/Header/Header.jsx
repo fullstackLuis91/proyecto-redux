@@ -26,8 +26,8 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Link to="/">Home</Link> /
+    <div className="Header">
+      <Link to="/">Home</Link> 
       
       <input onKeyUp={handleChange} placeholder="search post" name="text" />
 
@@ -38,7 +38,7 @@ const Header = () => {
         </>
       ) : (
         <>
-          <Link to="/login">Login</Link> /<Link to="/register">Register</Link> /
+          <Link to="/login">Login</Link> <Link to="/register">Register</Link> 
         </>
       )}
     </div>

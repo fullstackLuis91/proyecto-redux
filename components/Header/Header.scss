@@ -1,9 +1,20 @@
-.header {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    text-decoration: none;
+}
+
+.Header {
+    background-color: aquamarine;
+    padding: 30px;
+    display: flex;
+    font-size: 25px;
+    justify-content: space-around;
+    //  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
-    &__nav {
+}
+    /* &__nav {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -34,5 +45,5 @@
         background-color: #0056b3;
       }
     }
-  }
+  } */
   
