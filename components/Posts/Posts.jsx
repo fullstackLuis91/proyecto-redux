@@ -1,118 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAll } from "../../src/features/post/postSlice";
+import { addPost, getAll } from "../../src/features/post/postSlice";
 import Post from "../Post/Post";
-import { notification } from "antd";
+
 
 
 const Posts = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const initialValue = {
+    title: "",
+    body: "",
+  }
 
   useEffect(() => {
     dispatch(getAll());
   }, []);
 
-
- /* const newPost = () => {
-    const initialValue = {
-      title: "",
-      body: "",
-      userId: "",
-      reviews: "",
-      tokens: "",
-      likes: ""
-    }
-    const [postData, setPostData] = useState(initialValue);
-    const { title, body, userId, reviews, tokens, likes  } = postData;
+  
    
-    const dispatch = useDispatch();
-  
-    const { isSuccess, message, isError } = useSelector((state) => state.auth);
-  
-    useEffect(() => {
-      if (isSuccess) {
-        notification.success({
-          message: "Success",
-          description: message,
-        });
-      }
-      if(isError){
-        notification.error({
-          message: "Error",
-          description: message,
-        });
-      }
-      dispatch(reset())
-    }, [isSuccess,isError]);
-  
+    const [postData, setPostData] = useState(initialValue);
+    const { title, body  } = postData;
+   
     const onChange = (e) => {
       setPostData({
         ...postData,
         [e.target.name]: e.target.value,
       });
     };
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
       e.preventDefault();
-      
-      /*if (password !== password2) {
-        return notification.error({
-          message: "Error",
-          description: "Passwords do not match",
-        });
-      } else {
-         dispatch(register(formData));
-         return setFormData(initialValue)
-      }
+      await dispatch(addPost(postData));
+      dispatch(getAll());
     };
     return (
+      <div>
+        Posts
+      
+      New post
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          name="name"
-          value={name}
+          name="title"
+          value={title}
           onChange={onChange}
-          placeholder="Name"
+          placeholder="Title"
         />
         <input
-          type="email"
-          name="email"
-          value={email}
+          type="text"
+          name="body"
+          value={body}
           onChange={onChange}
-          placeholder="Email"
-        />
-        <input
-          type="date"
-          name="birthday"
-          value={birthday}
-          onChange={onChange}
-          placeholder="Birthday"
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={onChange}
-          placeholder="Password"
-        />
-        <input
-          type="password"
-          name="password2"
-          value={password2}
-          onChange={onChange}
-          placeholder="Password 2"
+          placeholder="Body"
         />
         <button type="submit">Post</button>
       </form>
-    );
-  };*/
+        <Post /> {/* Pinta las publicaciones */}
+      </div>
+    )};
   
-
-  return (
-    <div>
-      Posts
-      <Post /> {/* Pinta las publicaciones */}
-    </div>
-  );
-};
-
 export default Posts;
