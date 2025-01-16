@@ -16,10 +16,35 @@ const getByTitle = async (title) => {
   return res.data;
 };
 
+const like = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.put(API_URL + "/like/"+_id,{}, {
+      headers: {
+        authorization: token,
+      },
+    } );
+  return res.data;
+};
+
+const unLike = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.delete(API_URL + "/unLike/"+_id, {
+    headers: {
+      authorization: token,
+    }
+  })
+  return res.data
+}
+
+
 const postService = {
   getAll,
   getById,
-  getByTitle
+  getByTitle,
+  like,
+  unLike
 };
+
+
 
 export default postService;
