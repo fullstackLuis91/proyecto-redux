@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postService from "./postService";
 
+
 const initialState = {
   posts: [],
   post: {},
@@ -14,6 +15,8 @@ export const getAll = createAsyncThunk("posts/getAll", async () => {
     console.error(error);
   }
 });
+
+
 export const getById = createAsyncThunk("posts/getById", async (id) => {
   try {
     return await postService.getById(id);
@@ -37,6 +40,14 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
       console.error(error);
     }
   });
+  //funcion createPost
+  export const addPost = createAsyncThunk("posts/addPost", async (postData) => {
+    try {
+      return await postService.addPost(postData);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
   export const unLike = createAsyncThunk("posts/unLike", async (_id) => {
     try {
@@ -47,7 +58,16 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
     })
   
 
-export const postsSlice = createSlice({
+
+  export const addComment = createAsyncThunk("posts/addComment", async (id) => {
+    try {
+      return await postService.addComment(id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},

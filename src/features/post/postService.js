@@ -12,9 +12,32 @@ const getById = async (id) => {
 };
 
 const getByTitle = async (title) => {
-  const res = await axios.get(API_URL + "/title/" + title);
+  const res = await axios.get(API_URL + "/getByTitle/" + title);
   return res.data;
 };
+const addPost = async (postData) => {
+  const token = localStorage.getItem("token") 
+  const res = await axios.post(API_URL + "/create", postData, {
+    headers: {
+      authorization: token,
+    }
+  })
+  return res.data
+};
+
+const addComment = async (comment) => {
+  const token = localStorage.getItem("token") 
+  const res = await axios.put(API_URL + "/addComment/" + comment.id, comment.commentData, {
+    headers: {
+      authorization: token,
+    }
+  })
+  return res.data
+};
+
+  // comment.commentData
+  // comment.id
+
 
 const like = async (_id) => {
   const token = localStorage.getItem("token");
@@ -42,7 +65,9 @@ const postService = {
   getById,
   getByTitle,
   like,
-  unLike
+  unLike,
+  addPost,
+  addComment
 };
 
 
