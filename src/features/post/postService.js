@@ -25,12 +25,26 @@ const addPost = async (postData) => {
   return res.data
 };
 
+const addComment = async (comment) => {
+  const token = localStorage.getItem("token") 
+  const res = await axios.put(API_URL + "/addComment/" + comment.id, comment.commentData, {
+    headers: {
+      authorization: token,
+    }
+  })
+  return res.data
+};
+
+  // comment.commentData
+  // comment.id
+
 
 const postService = {
   getAll,
   getById,
   getByTitle,
-  addPost
+  addPost,
+  addComment
 };
 
 export default postService;

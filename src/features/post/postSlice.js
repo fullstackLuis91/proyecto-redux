@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postService from "./postService";
-import authService from "../auth/authService";
+
 
 const initialState = {
   posts: [],
@@ -35,6 +35,14 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
   export const addPost = createAsyncThunk("posts/addPost", async (postData) => {
     try {
       return await postService.addPost(postData);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  export const addComment = createAsyncThunk("posts/addComment", async (id) => {
+    try {
+      return await postService.addComment(id);
     } catch (error) {
       console.error(error);
     }
