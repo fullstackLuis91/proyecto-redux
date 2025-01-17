@@ -35,10 +35,6 @@ const addComment = async (comment) => {
   return res.data
 };
 
-  // comment.commentData
-  // comment.id
-
-
 const like = async (_id) => {
   const token = localStorage.getItem("token");
   const res = await axios.put(API_URL + "/like/"+_id,{}, {
