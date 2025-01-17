@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
 import { register, reset } from "../../src/features/auth/authSlice";
 import "./Register.scss"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   const initialValue = {
@@ -16,6 +17,7 @@ const Register = () => {
   const { name, email, birthday, password, password2 } = formData;
  
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
@@ -51,6 +53,7 @@ const Register = () => {
       });
     } else {
        dispatch(register(formData));
+       navigate("/")
        return setFormData(initialValue)
     }
   };

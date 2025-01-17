@@ -1,0 +1,30 @@
+.profile {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: rgb(89, 89, 242); 
+  
+    &__card {
+      background-color: #fff; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      border-radius: 10px; 
+      padding: 2rem; 
+      text-align: center; 
+      width: 300px; 
+      -webkit-box-shadow: 12px 21px 13px 0px rgba(0,0,0,0.75); -moz-box-shadow: 12px 21px 13px 0px rgba(0,0,0,0.75); box-shadow: 12px 21px 13px 0px rgba(0,0,0,0.75);
+    }
+  
+    &__name {
+      font-size: 1.5rem; 
+      font-weight: bold; 
+      color: #333; 
+      margin-bottom: 1rem; 
+    }
+  
+    &__email {
+      font-size: 1rem; 
+      color: #666; 
+    }
+  }
+  
