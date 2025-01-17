@@ -1,0 +1,93 @@
+.posts {
+    padding: 20px;
+    background-color: #688777;
+    position: relative;
+    margin-top: 10px;
+    
+    &__logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 300px;
+      height: auto;
+    }
+
+    .posts__main-title {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: black; /* Cambiar el color a negro */
+      text-align: center;
+    }
+    
+
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: black;  /* Cambiar el color a negro */
+    }
+
+    &__form-container {
+      margin-bottom: 30px;
+      padding: 50px;
+      background-color: #92A079;
+      border: 1px solid #020e03;
+      border-radius: 8px;
+      max-width: 350px;
+      margin: 0 auto;
+
+      &__form-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        color: black;  /* Cambiar el color a negro */
+      }
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+
+      &__button {
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+
+    &__image-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .posts__title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: black; /* Cambiar el color a negro */
+    }
+
+    
+
+    &__image {
+      width: 48%; /* Hacer las imágenes más pequeñas */
+      height: auto;
+      object-fit: contain;
+    }
+}

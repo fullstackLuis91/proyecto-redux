@@ -40,7 +40,7 @@ export const getByTitle = createAsyncThunk("posts/getByTitle", async (title) => 
       console.error(error);
     }
   });
-  //funcion createPost
+  
   export const addPost = createAsyncThunk("posts/addPost", async (postData) => {
     try {
       return await postService.addPost(postData);
